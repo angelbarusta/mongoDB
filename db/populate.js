@@ -1,7 +1,11 @@
-const mongo = require("./connect");
-const argv = require('yargs').argv;
+//--Este archivo es para facilitar el proceso de poblar y limpiar la base de datos.
+
+const mongo = require("./connect");// viene directa de la instancia de coneccion
+const argv = require('yargs').argv; // yargs se hace para pasar argumentos a nuestro modulo de node
 const usersData = require("../resources/users");
 
+//--Argumento para poblar la db--base a colecciones "users"
+//--Usando los datos de users.json
 if (argv.fill) {
     mongo.connect()
         .then(db=>{
@@ -13,7 +17,8 @@ if (argv.fill) {
         })
     return;
 }
-
+//--Argumento para limpiar la db--base a colecciones "users"
+//--Usando los datos de users.json
 if (argv.clear) {
     mongo.connect()
         .then(db=>{
